@@ -1,6 +1,6 @@
 
 
-export default function CurrencyData () {
+export default function CurrencySelection () {
     const [currencies, setCurrencies] = useState({searchterm: "", });
 
   const handleChange = (event) => {

@@ -1,13 +1,13 @@
 
 import './App.css'
-import CurrencyDate from './components/CurrencyData'
+import CurrencyDate from './components/CurrencySelection'
 import ExchangeRateDisplay from './components/ExchangeRateDisplay'
 
 function App() {
 
   return (
     <div>
-      <CurrencyData />
+      <CurrencySelection />
       <ExchangeRateDisplay />
 
     </div>
