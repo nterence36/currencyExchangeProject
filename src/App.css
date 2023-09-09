@@ -1,0 +1,10 @@
+* {
+    margin: 30px auto;
+    
+}
+.CurrencyData {
+    display: flex;
+    justify-self: center;
+    align-items: center;
+
+}
