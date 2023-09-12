@@ -1,4 +1,4 @@
-* {
+/* * {
     margin: 30px auto;
     
 }
@@ -7,4 +7,12 @@
     justify-self: center;
     align-items: center;
 
+} */
+
+
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
