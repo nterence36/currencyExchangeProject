@@ -8,7 +8,7 @@ function App() {
   const [currencyAppData, setCurrencyAppData] = useState({conversion: "", amount: "", currency: "", resultCurrency: "",})
   
   
-  const API_KEY = 'e21ebb0683-8d0a0a17f8-s0qpsm';
+  const API_KEY = '382c88419b-d932c81958-s0z53g';
 
   const getConversion = async (amount, startCurrency, targetCurrency) => {
    
