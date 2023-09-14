@@ -1,12 +1,13 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import CurrencyData from "./components/CurrencyData";
 
 import ExchangeRateDisplay from "./components/ExchangeRateDisplay";
 
 function App() {
-  const [currencyAppData, setCurrencyAppData] = useState({conversion: "", resultCurrency: "",})
- 
+  const [currencyAppData, setCurrencyAppData] = useState({conversion: "", amount: "", currency: "", resultCurrency: "",})
+  
+  
   const API_KEY = 'e21ebb0683-8d0a0a17f8-s0qpsm'
 
   const getConversion = async (amount, startCurrency, targetCurrency) => {
@@ -14,31 +15,36 @@ function App() {
     try {
        // The variable response will store the response from the API and fetch() is the function to call the API
       const response = await fetch(
- 
+        
         `https://api.fastforex.io/convert?from=${startCurrency}&to=${targetCurrency}&amount=${amount}&api_key=${API_KEY}`
       );
     const responseJSObj = await response.json();
-   // console.log(responseJSObj);
-    setCurrencyAppData({...currencyAppData, conversion:responseJSObj.result[targetCurrency], resultCurrency:targetCurrency})}
+      
+   // setCurrencyAppData will be pass down to child components
+     setCurrencyAppData({...currencyAppData, conversion:responseJSObj.result[targetCurrency], amount:amount, currency:startCurrency, resultCurrency:targetCurrency})
+    
+  }
     catch(e){ console.error(e)}
    
 
   };
  
-
+useEffect(() => {
+  getConversion(1, "USD", "EUR")
+}, [])
 
   return (
-    <div>
-      <h1>CURRENCY EXCHANGE SITE</h1>
+    <div className="app">
+      <h1>CURRENCY CONVERSION SITE</h1>
       <p>
-        You can see the exchange rates of over 170 currencies in the greate site{" "}
-        <br></br>
+        This site is limited to only 7 currencies.US Dollars, Euro, Nigerian Naira, 
+        <br></br>Chinese Yuan, British Pounds, Cuban Peso and Swiss Franc 
+        
       </p>
       <p>
-        {" "}
-        In the first column enter the currency you current possed and enter in
-        the second<br></br>
-        input the currency you intend to convert to
+        In the first column enter the amount you want to convert, follow by selecting <br></br>
+        the currency you're to convert on firt dropdown, thenselect the currency you <br></br>intend
+       to convert to  on second dropdown and finally select or click submit <br></br>button to get your result.
       </p>
       <CurrencyData currencyAvailable = {currencyAppData} getConversion={getConversion}/>
       <ExchangeRateDisplay currencyAppData={currencyAppData}/>

@@ -1,7 +1,9 @@
 export default function ExchangeRateDisplay({currencyAppData}) {
   return (
     <div className="ExchangeRateDisplay">
-      <p>This is your conversion {currencyAppData.conversion} {currencyAppData.resultCurrency}</p>
+      <h2>Your Result is displayed below</h2>
+      {/* {currencyAppData.targetCurrency} */}
+      <p>{currencyAppData.amount} {currencyAppData.currency} = {currencyAppData.conversion} {currencyAppData.resultCurrency}</p>
     </div>
   );
 }
